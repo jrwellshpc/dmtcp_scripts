@@ -17,7 +17,5 @@ if [ -f "$FILE" ]; then
     export LATEST_CHECKPOINT=$(ls -lart ckpt_*.dmtcp | tail -1 | tr -s ' ' | cut -d ' ' -f9)
     dmtcp_restart -i 10 $LATEST_CHECKPOINT
 else
-    #mkdir -p $CKDIR
-    #--ckptdir $CKDIR
     dmtcp_launch -i 10 python3 counter.py
 fi
