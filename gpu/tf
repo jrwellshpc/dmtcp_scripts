@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#SBATCH -J tensorflow        # Job name
+#SBATCH -o tf.%j.o        # Name of stdout output file (%j expands to jobId)
+#SBATCH -e tf.%j.e        # Name of standard error file
+#SBATCH -N 1              # Total number of nodes requested
+#SBATCH -n 1              # Total number of mpi tasks requested
+#SBATCH -t 0-00:30:00     # Time (D-HH:MM:SS)
+#SBATCH --mem=100000M     # Memory
+#SBATCH -p serial_requeue # Partition(s) (separate with commas if using multiple)
+
+module load Anaconda3     # Your institution likely has a different way to access Conda
+module load cuda/9.0      # Ditto
+module load cudnn/7.4.1.5_cuda9.0 # Ditto
+source activate tf1.12    # Activate your conda env
+FILE=dmtcp_restart_script.sh
+#export DMTCP_DL_PLUGIN=0  # Hack for non-GPU Tensorflow runs
+if [ -f "$FILE" ]; then
+    export LATEST_CHECKPOINT=$(ls -lart ckpt_*.dmtcp | tail -1 | tr -s ' ' | cut -d ' ' -f9)
+    dmtcp_restart -i 60 $LATEST_CHECKPOINT
+else
+    dmtcp_launch -i 60 python3 -u tf.py
+fi
+source deactivate
