@@ -7,7 +7,9 @@
 #SBATCH -n 1              # Total number of mpi tasks requested
 #SBATCH -t 0-00:30:00     # Time (D-HH:MM:SS)
 #SBATCH --mem=100000M     # Memory
-#SBATCH -p serial_requeue # Partition(s) (separate with commas if using multiple)
+#SBATCH -p gpu		  # Partition(s) (separate with commas if using multiple)
+#SBATCH --gres=gpu:1      # Request 1 GPU
+#SBATCH --gpu-freq=high   # Configure the GPU for high frequency operations
 
 # In dmtcp_restart and dmtcp_launch you will see a -i 10. That means create a checkpoint every 10 seconds. 
 # This is a lot of overhead so I'd recommend changing that to 3600 (once an hour) when you are ready.
@@ -20,8 +22,8 @@ FILE=dmtcp_restart_script.sh
 #export DMTCP_DL_PLUGIN=0  # Hack for non-GPU Tensorflow runs
 if [ -f "$FILE" ]; then
     export LATEST_CHECKPOINT=$(ls -lart ckpt_*.dmtcp | tail -1 | tr -s ' ' | cut -d ' ' -f9)
-    dmtcp_restart -i 60 $LATEST_CHECKPOINT
+    dmtcp_restart -i 10 $LATEST_CHECKPOINT
 else
-    dmtcp_launch -i 60 python3 -u tf.py
+    dmtcp_launch -i 10 python3 -u tf.py
 fi
 source deactivate
