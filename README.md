@@ -9,13 +9,13 @@ IMPORTANT: Within the sbatch files you'll see dmtcp_restart and dmtcp_launch wit
 Download this repository and run the Sbatch the non .py files in these directories and let them run for 2 minutes. Have a peak at the output so you know where it was, then requeue the job, or kill and run it again. You'll see the job pickup from the last save point, likely within 10 seconds if you kept the '-i 10' in place.
 
 ## Files
-Within GitHub:
-counter\counter.py is a simple Python counter.
-counter\slurm_counter.job is the sbatch file that submits counter.py to the scheduler through DMTCP. 
-gpu\tf.py is a Python script that uses Tensorflow to do a model.fit over 500 epochs.
-gpu\tf is the sbatch file that submits tf.py to the scheduler through DMTCP.
+Within GitHub:  
+counter\counter.py is a simple Python counter.  
+counter\slurm_counter.job is the sbatch file that submits counter.py to the scheduler through DMTCP.  
+gpu\tf.py is a Python script that uses Tensorflow to do a model.fit over 500 epochs.  
+gpu\tf is the sbatch file that submits tf.py to the scheduler through DMTCP.  
 
-Created at Runtime:
-ckpt_platform-*.dmtcp
-dmtcp_restart_script_*.sh
-dmtcp_restart_script.sh
+Created at Runtime:  
+ckpt_platform-*.dmtcp  
+dmtcp_restart_script_*.sh  
+dmtcp_restart_script.sh  
