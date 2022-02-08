@@ -16,6 +16,6 @@ gpu\tf.py is a Python script that uses Tensorflow to do a model.fit over 500 epo
 gpu\tf is the sbatch file that submits tf.py to the scheduler through DMTCP.  
 
 Created at Runtime:  
-ckpt_platform-*.dmtcp  
-dmtcp_restart_script_*.sh  
-dmtcp_restart_script.sh  
+ckpt_platform-\*.dmtcp The checkpointing file.  
+dmtcp_restart_script_\*.sh Makes submiting the checkpoint file to DMTCP easier.  
+dmtcp_restart_script.sh A pointer to the other dmtcp_restart file. 
