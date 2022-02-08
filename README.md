@@ -1,4 +1,4 @@
-# DMTCP scripts to get a Python number checker working in SLURM.
+# DMTCP scripts to get Python working in SLURM.
 
 ## Theory of Operation
 counter\slurm_counter.job, and gpu\tf, are SLURM scripts that submit a new Python job through the Distributed MultiThreaded CheckPointing (DMTCP) that has been installed on the cluster (yum install dmtcp). However, if it finds a dmtcp_restart_script.sh in the same directory (a pointer to the dmtcp_restart_script_\*.sh files), it helpfully will run dmtcp_restart on the latest checkpoint (ckpt_platform-\*.dmtcp files) that was created. This is important on clusters where jobs can be requeued when a higher priority job comes along.
