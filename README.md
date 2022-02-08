@@ -6,7 +6,7 @@ counter\slurm_counter.job, and gpu\tf, are SLURM scripts that submit a new Pytho
 IMPORTANT: Within the sbatch files you'll see dmtcp_restart and dmtcp_launch with a "-i 10". That means create a checkpoint every 10 seconds. This is a lot of overhead so I'd recommend changing that to 3600 (once an hour) when you are ready.
 
 ## Instructions
-Download this repository and run the Sbatch the non .py files in these directories and let them run for 2 minutes. Have a peak at the output so you know where it was, then requeue the job, or kill and run it again. You'll see the job pickup from the last save point, likely within 10 seconds if you kept the '-i 10' in place.
+Download this repository and run the Sbatch the non .py files in these directories and let them run for 2 minutes. Have a peak at the output ('ls -alt') so you know where it was, then requeue the job, or kill and run it again. You'll see the job pickup from the last save point, likely within 10 seconds if you kept the '-i 10' in place.
 
 ## Files
 Within GitHub:  
