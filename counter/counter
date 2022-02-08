@@ -6,6 +6,7 @@
 #SBATCH -N 1                 # Total number of nodes requested
 #SBATCH -n 1                 # Total number of mpi tasks requested
 #SBATCH -t 0-00:30:00        # Time (D-HH:MM:SS)
+#SBATCH -p serial_requeue    # Partition(s) (separate with commas if using multiple)
 #SBATCH --mem=500M           # Memory
 
 # In dmtcp_restart and dmtcp_launch you will see a -i 10. That means create a checkpoint every 10 seconds. 
