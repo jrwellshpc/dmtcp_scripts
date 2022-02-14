@@ -7,7 +7,7 @@
 #SBATCH -n 1              # Total number of mpi tasks requested
 #SBATCH -t 0-00:30:00     # Time (D-HH:MM:SS)
 #SBATCH --mem=100000M     # Memory
-#SBATCH -p gpu		  # Partition(s) (separate with commas if using multiple)
+#SBATCH -p gpu_requeue	  # Partition(s) (separate with commas if using multiple)
 #SBATCH --gres=gpu:1      # Request 1 GPU
 #SBATCH --gpu-freq=high   # Configure the GPU for high frequency operations
 
